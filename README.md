@@ -3,7 +3,9 @@ ExceptionCoder is an advanced exception safety code generation method based on C
 
 ## News
 [Jun 19, 2024]We submit this project to Prof.Huang Minlie and Prof.Yuan Yuan and got approved.
+
 Discussing and Execuvating...
+
 [Aug 8, 2024] We formally create the sharing software project and overleaf paperwork. Also, set contribution to all of us, Zhang xuanming, Chen yuxuan and Chen Yonghang.
 
 ## Outline
