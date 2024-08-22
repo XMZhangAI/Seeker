@@ -22,19 +22,19 @@ Discussing and Execuvating...
   - [Evaluation](#evaluation)
     - [Detection](#detection)
       - [Coverage Pass](#coverage-pass)
-      - [Recall@k](#recall@k)
+      - [Recall@k](#recallk)
     - [Handling](#handling)
-      - [LLMReview Score](#llmreview)
-      - [Pass@k](#pass@k)
-    - [Sensitive Code Detection](#sensitive-code-detection)
-      - [Experimental Settings](#experimental-settings)
-      - [Leaderboard](#leaderboard)
-      - [Detection](#detection-basleines)
-    - [Exception Safety Code Generation](#exception-safety-code-generation)
-      - [Experimental Settings](#experimental-settings)
-      - [Leaderboard](#leaderboard)
-      - [Handling](#handling-baselines)  
-    - [Citation](#citation)
+      - [LLMReview（or other recommend）\[prior\]](#llmreviewor-other-recommendprior)
+      - [Pass@k(待定)](#passk待定)
+  - [Sensitive Code Detection](#sensitive-code-detection)
+    - [Experimental Settings](#experimental-settings)
+    - [Leaderboard](#leaderboard)
+    - [Detection Baslines](#detection-baslines)
+  - [Exception Safety Code Generation](#exception-safety-code-generation)
+    - [Experimental Settings](#experimental-settings-1)
+    - [Leaderboard](#leaderboard-1)
+    - [Handling Baselines](#handling-baselines)
+  - [Citation](#citation)
 
 
 ## Introduction
@@ -70,22 +70,73 @@ Discussing and Execuvating...
 
   ## Released Versions
   这个地方主要是我们CEE和ExceptionEval的迭代情况，@陈宇轩。总结每次迭代的粒度、效果、迭代方法和原因。
+  + CEE 1.0
+    基于gpt和jdk文档信息直接生成,生成采用的prompt参见`pipeline/prompt.py`,基本生成了CEE的基本信息，问题主要是粒度不够统一，描述的异常类型不够全面，比较泛泛。
+    在此基础上测试recall为0.46
+  + CEE 2.0
+    基于CEE 1.0, 参考gptscan中的异常粒度，交由gpt进行粒度统一生成，生成的prompt参见`pipeline/prompt.py`,生成了更加细致的异常类型，粒度基本可以统一
+    同时更改了异常代码的检测方案，原先方案是直接提供全部的CEE信息，标注异常类型，现在改为逐个依次询问CEE中的条目（dfs），做判断题，以此来进行标注
+    在此基础上测试recall为0.72（此检测方法下的CEE 1.0 recall为0.61）
+  + CEE 3.0
+    在CEE 2.0的基础上，进行人工修饰，使表达更加统一
+    增加了coverage pass指标，用于评估行级别检测的效果
+    增加了llmreview指标（不是很稳定）
+    行级别的标注有两种思路
+      1. 按层级，给出全部场景，直接标注（快，拉胯，但是多标的少
+      2. 按层级，依次分别判断是否属于某个场景，对所有是的继续进入下一层级（慢。特别是逐行标，准确率较高，易多标
+    直观和测试结果都会死第二种思路更好，但是速度太慢，目前结果
+    |metric|score|
+    |---|---|
+    |recall|0.76|
+    |coverage|0.49|
+    |llmreview|极不稳定|
+    第二种思路目前对于大规模的函数进行行级别的标注感觉速度有点慢，需要进行进一步改进
+  
 
   ## CEE
   （Major）
   ### Grid
-  粒度
+  粒度: 基本可以统一，个人直观感受类似于vscode对于C++所报错的二级traceback粒度
   ### Components
-  构成
+  构成：基本包含异常名，子异常，异常定义，异常原因，危险操作，样例代码，处理代码，异常场景
+  ```json
+  {
+    "name": "AnnotationFormatError",
+    "children": [],
+    "info": {
+        "definition": "The AnnotationFormatError in Java is a runtime exception that is thrown when the annotation parser attempts to read an annotation from a class file and determines that the annotation is malformed. This error is part of java.lang package.",
+        "reasons": "This error mainly occurs when the Java Virtual Machine (JVM) reads an annotation from a .class file and finds the annotation to be badly formed. It could be due to an incorrect representation or format of the annotation data in the .class file. Such an anomaly can occur due to JVM incompatibility issues with different versions or faulty build tools that may have not converted the annotations into the .class file accurately.",
+        "dangerous_operations": "The most dangerous operation which can lead to this error is the decompiling or reverse engineering of a .class file. Decompiling or modifying .class files manually runs the risk of corrupting the file or changing the annotation format incorrectly. Also, using untrusted or incompatible build tools can generate incorrect file structures that lead to this error.",
+        "sample_code": "Unfortunately, it is not straightforward to provide a sample Java code snippet that causes an AnnotationFormatError as this error is mostly caused by JVM internals when reading from a .class file.",
+        "handle_code": "Handling the AnnotationFormatError can be a bit tricky as you cannot anticipate it in your own code since it's a deeper JVM related error. However, a basic way to handle it can be by simply using a try-catch block to print the stack trace for debugging.",
+        "handle_code_snippet": "try {\n    // code that might throw AnnotationFormatError\n} catch (AnnotationFormatError e) {\n    e.printStackTrace();\n}"
+    },
+    "scenario": "declare and process annotations in code, possibly during compilation or runtime"
+  }
+  ```
 
   ## Metadata
   这个地方说明ExceptionEval的构建情况和标准。包括生成数据：模型信息，prompt，数据标准，依据。项目数据：采样方法、标准。引用数据：引用论文，方法概述。
+  + 生成方法
+    - 模型信息：GPT-4o
+    - prompt：`pipeline/prompt.py`
+    - 数据标准：jdk，CEE(可以参考上面的例子)
+    - 依据：gptscan...
+  + 项目数据
+    - 采样方法：爬取java项目, yh整理的数据集
+    - 标准：具有2+异常处理的函数代码，yh的论文
 
   ## Repositories
   [基于Metadata-项目数据]这个地方是ExceptionEval项目采样的库来源，提供高质量维护的说明（如stars，commit等）。
 
   ## Evaluation
   指标信息（Coverage Pass（优化设计，有效检测指标[考虑漏报和误报]），Recall（异常类型分类指标），Code/LLMReview（or other solid metrics）（异常处理质量评估指标[prior]），Pass@k（异常处理功能正确性指标）[异常处理究竟是否影响代码功能正确性]），实时更新实验数据（检测和生成）。
+  + 目前结果
+    |metric|score|
+    |---|---|
+    |recall|0.76|
+    |coverage|0.49|
+    |llmreview|极不稳定|
 
   ### Detection
   #### Coverage Pass
