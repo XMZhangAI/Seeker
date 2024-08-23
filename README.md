@@ -67,9 +67,11 @@ Discussing and Execuvating...
   `勇杭baselines问题、指标、数据接口`
   
   同时带来了分类与生成可解释性、异常类型平衡分布、自定义异常处理的巨大优势。我们向已开源项目反馈了x处异常处理优化建议并获得采纳。
+  <img width="1394" alt="截屏2024-08-23 14 33 47" src="https://github.com/user-attachments/assets/ebf3c4c1-dec6-44af-8d6d-51ad48b20c5c">
+
 
   ## Released Versions
-  这个地方主要是我们CEE和ExceptionEval的迭代情况，@陈宇轩。总结每次迭代的粒度、效果、迭代方法和原因。
+  `这个地方主要是我们CEE和ExceptionEval的迭代情况，@陈宇轩。总结每次迭代的粒度、效果、迭代方法和原因。`
   + CEE 1.0
     基于gpt和jdk文档信息直接生成,生成采用的prompt参见`pipeline/prompt.py`,基本生成了CEE的基本信息，问题主要是粒度不够统一，描述的异常类型不够全面，比较泛泛。
     在此基础上测试recall为0.46
@@ -116,7 +118,7 @@ Discussing and Execuvating...
   ```
 
   ## Metadata
-  这个地方说明ExceptionEval的构建情况和标准。包括生成数据：模型信息，prompt，数据标准，依据。项目数据：采样方法、标准。引用数据：引用论文，方法概述。
+  `这个地方说明ExceptionEval的构建情况和标准。包括生成数据：模型信息，prompt，数据标准，依据。项目数据：采样方法、标准。引用数据：引用论文，方法概述。`
   + 生成方法
     - 模型信息：GPT-4o
     - prompt：`pipeline/prompt.py`
@@ -127,10 +129,10 @@ Discussing and Execuvating...
     - 标准：具有2+异常处理的函数代码，yh的论文
 
   ## Repositories
-  [基于Metadata-项目数据]这个地方是ExceptionEval项目采样的库来源，提供高质量维护的说明（如stars，commit等）。
+  `[基于Metadata-项目数据]这个地方是ExceptionEval项目采样的库来源，提供高质量维护的说明（如stars，commit等）。`
 
   ## Evaluation
-  指标信息（Coverage Pass（优化设计，有效检测指标[考虑漏报和误报]），Recall（异常类型分类指标），Code/LLMReview（or other solid metrics）（异常处理质量评估指标[prior]），Pass@k（异常处理功能正确性指标）[异常处理究竟是否影响代码功能正确性]），实时更新实验数据（检测和生成）。
+  `指标信息（Coverage Pass（优化设计，有效检测指标[考虑漏报和误报]），Recall（异常类型分类指标），Code/LLMReview（or other solid metrics）（异常处理质量评估指标[prior]），Pass@k（异常处理功能正确性指标）[异常处理究竟是否影响代码功能正确性]），实时更新实验数据（检测和生成）。`
   + 目前结果
     |metric|score|
     |---|---|
@@ -140,9 +142,14 @@ Discussing and Execuvating...
 
   ### Detection
   #### Coverage Pass
-  设计，有效检测指标[考虑漏报和误报]
+  `设计，有效检测指标[考虑漏报和误报]。宇轩在这里更新指标设计`
+  <img width="1831" alt="image" src="https://github.com/user-attachments/assets/aa9bd995-dcb5-4c3d-99f0-1291761523a6">
+  <img width="1020" alt="image" src="https://github.com/user-attachments/assets/92805f2c-46a0-4008-a7f0-83b3d2a70d74">
+
   #### Recall@k
   异常类型分类指标
+  <img width="723" alt="image" src="https://github.com/user-attachments/assets/b3309841-72e0-4b72-8a01-4a6b1881df71">
+
   ### Handling
   #### LLMReview（or other recommend）[prior]
   异常处理质量评估指标
@@ -150,6 +157,7 @@ Discussing and Execuvating...
 
   ## Sensitive Code Detection
   ### Experimental Settings
+  `宇轩：按照pipline，详细介绍具体方法实现和工作流`
   ### Leaderboard
   不同模型的测试效果
   ### Detection Baslines
@@ -163,6 +171,9 @@ Discussing and Execuvating...
   不同模型的测试效果
   ### Handling Baselines
   FuzzyCatch
+  ### Issue Solving
+  SWE-bench performance
+  <img width="1004" alt="image" src="https://github.com/user-attachments/assets/c7827835-3e1a-49de-9bd0-47d276f7c386">
 
   ## Citation
   
