@@ -7,6 +7,9 @@ ExceptionCoder is an advanced exception safety code generation method based on C
 Discussing and Execuvating...
 
 [Aug 8, 2024] We formally create the sharing software project and overleaf paperwork. Also, set contribution to all of us, Zhang xuanming, Chen yuxuan and Chen Yonghang.
+[Aug 23,2024] CEE-base(version3),with more specific scenario defination and first-round experiments; Baselines experiments.[All in Code-Slice Level: ExceptionEval-base]; Also, have a discussion with Dr.Jia Li
+[ToDo,End annouce] Yuxuan: Fine-grid(Code-attribute-based)property; Optimazing methods from theory.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]
+Yonghang: Related works including empiricals, providing with theory(test the relevance with vulnerability series); Benchmark interface with repo-level and HumanEval&SWE-Bench; Fine-tuning baseline(SFT,alignment)[switching]
 
 ## Outline
 - [ExceptionCoder](#exceptioncoder)
@@ -34,17 +37,20 @@ Discussing and Execuvating...
     - [Experimental Settings](#experimental-settings-1)
     - [Leaderboard](#leaderboard-1)
     - [Handling Baselines](#handling-baselines)
+    - [Issue Solving](#issue-solving)
   - [Citation](#citation)
 
 
 ## Introduction
-大语言模型在代码生成任务上的功能正确性持续获得关注与提高，越来越多的工作关注如何生成通过更多测试用例的代码、如何减少代码生成的功能型漏洞或缺陷。然而，无论是训练数据层面还是人类平均的编程素养，以异常处理为代表的必要代码可维护性功能被现有的大模型忽视。鉴于即使是资深人类开发者，一个异常安全的高信度项目也在有效检测和恰当处理两个任务上面临挑战，大模型在该任务上的缺乏注意力导致了更加惨不忍睹的效果：可以说大模型完全无法理解维护功能的使用技巧。
+大语言模型在代码生成任务上的功能正确性持续获得关注与提高，越来越多的工作关注如何生成通过更多测试用例的代码、如何减少代码生成的功能型漏洞或缺陷。然而，无论是训练数据层面还是人类平均的编程素养，以异常处理为代表的必要代码可维护性功能被现有的大模型忽视。鉴于即使是资深人类开发者，一个异常安全的高信度项目也在有效检测和恰当处理两个任务上面临挑战，大模型在该任务上缺失高质量训练数据抑或良好的方法指导，导致了更加惨不忍睹的效果：可以说，大模型无法理解维护功能的使用技巧。
+<img width="1432" alt="image" src="https://github.com/user-attachments/assets/b66f5504-0a88-4608-93e7-fac4ac309e0a">
 
-`指标设计，宇轩指标实现(evaluation)，勇杭实验数据：给个指标，普通提示词的良异常处理率(baseline-pure LLM)。（Coverage Pass（优化设计，有效检测指标[考虑漏报和误报]），Recall（异常类型分类指标），Code/LLMReview（or other solid metrics）（异常处理质量评估指标[prior]），Pass@k（异常处理功能正确性指标）[异常处理究竟是否影响代码功能正确性]）`
+`指标设计，宇轩指标实现(evaluation-done)，勇杭实验数据：给个指标，普通提示词的良异常处理率(baseline-pure LLM)。（Coverage Pass（优化设计，有效检测指标[考虑漏报和误报]），Recall（异常类型分类指标），Code/LLMReview（or other solid metrics）（异常处理质量评估指标[prior]），Pass@k（异常处理功能正确性指标）[异常处理究竟是否影响代码功能正确性]）`
   
   在本文中，我们首先进行了实证研究，总结了大模型在异常处理任务上面对的两个主要困难：异常类型判断和处理逻辑生成，
-  
-  `勇杭：预实验指标。(baseline-prompt LLM)`
+  <img width="1238" alt="image" src="https://github.com/user-attachments/assets/872ee6b6-fec5-46e8-842f-b496330277bb">
+
+  `勇杭：预实验指标。(baseline: prompt LLM, with KPC, direct generating, prompt(give specific exception) generating, logic-full prompt generating)`
   
   并提出了基于ExceptionEval数据集衡量异常处理检测效果的新指标Coverage Pass，兼顾检测任务常见的漏报与误报问题作出更精确的效果量化。
   
@@ -67,8 +73,8 @@ Discussing and Execuvating...
   `勇杭baselines问题、指标、数据接口`
   
   同时带来了分类与生成可解释性、异常类型平衡分布、自定义异常处理的巨大优势。我们向已开源项目反馈了x处异常处理优化建议并获得采纳。
-  <img width="1394" alt="截屏2024-08-23 14 33 47" src="https://github.com/user-attachments/assets/ebf3c4c1-dec6-44af-8d6d-51ad48b20c5c">
-[whiteboard_exported_image.pdf](https://github.com/user-attachments/files/16727785/whiteboard_exported_image.pdf)
+  ![whiteboard_exported_image](https://github.com/user-attachments/assets/7fe89b65-8cc2-4bef-a7a8-7980628bc561)
+
 
 
   ## Released Versions
@@ -177,4 +183,21 @@ Discussing and Execuvating...
   <img width="1004" alt="image" src="https://github.com/user-attachments/assets/c7827835-3e1a-49de-9bd0-47d276f7c386">
 
   ## Citation
+  `Yonghang: infilling summarize method,result,issue and papers`
+  [2023 ASE]From Misuse to Mastery: Enhancing Code Generation with Knowledge-Driven AI Chaining
+  KPC针对简单function-level代码提出了一个基于Java JDK文档的循环问询框架。然而，无法保证代码功能的固定性、异常类型的覆盖度、代码难度的泛化性、可解释性。此外，评估方法存疑（Evosuite，CodeReview，LLMEval，BLEU）[criticize, introduce our solid metrics]。
+  [2020 FSE]Code recommendation for exception handling
+  `To be continued`
+  [2020 ASE]Learning to Handle Exceptions
+  基于微调LSTM架构的机器学习方法 `To be continued`
+  [IDE Plugin]Csense; ExceptionAI
+  not maintaining&bad performance `To be double check`
+  [Prof.Yang Liu]
+  Combining Fine-Tuning and LLM-based Agents for Intuitive Smart Contract Auditing with Justifications
+  <img width="1446" alt="image" src="https://github.com/user-attachments/assets/74e27773-595c-4bab-b4a6-f4f63abdfa39">
+  `To be verified`
+  <img width="1508" alt="image" src="https://github.com/user-attachments/assets/0c22d028-59be-484a-86cc-20d5bca00873">
+
+
+
   
