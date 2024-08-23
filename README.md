@@ -192,7 +192,8 @@ Yonghang: Related works including empiricals, providing with theory(test the rel
   <img width="1004" alt="image" src="https://github.com/user-attachments/assets/c7827835-3e1a-49de-9bd0-47d276f7c386">
 
   ## Citation
-  `Yonghang: infilling summarize method,result,issue and papers`
+  `Yonghang: infilling with summarize papers: method,result,issue`
+  
   [2023 ASE]From Misuse to Mastery: Enhancing Code Generation with Knowledge-Driven AI Chaining
   
   KPC针对简单function-level代码提出了一个基于Java JDK文档的循环问询框架。然而，无法保证代码功能的固定性、异常类型的覆盖度、代码难度的泛化性、可解释性。此外，评估方法存疑（Evosuite，CodeReview，LLMEval，BLEU）[criticize, introduce our solid metrics]。
