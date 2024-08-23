@@ -7,8 +7,13 @@ ExceptionCoder is an advanced exception safety code generation method based on C
 Discussing and Execuvating...
 
 [Aug 8, 2024] We formally create the sharing software project and overleaf paperwork. Also, set contribution to all of us, Zhang xuanming, Chen yuxuan and Chen Yonghang.
+
 [Aug 23,2024] CEE-base(version3),with more specific scenario defination and first-round experiments; Baselines experiments.[All in Code-Slice Level: ExceptionEval-base]; Also, have a discussion with Dr.Jia Li
-[ToDo,End annouce] Yuxuan: Fine-grid(Code-attribute-based)property; Optimazing methods from theory.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]
+
+[ToDo,End annouce] 
+
+Yuxuan: Fine-grid(Code-attribute-based)property; Optimazing methods from theory.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]
+
 Yonghang: Related works including empiricals, providing with theory(test the relevance with vulnerability series); Benchmark interface with repo-level and HumanEval&SWE-Bench; Fine-tuning baseline(SFT,alignment)[switching]
 
 ## Outline
@@ -93,7 +98,7 @@ Yonghang: Related works including empiricals, providing with theory(test the rel
     行级别的标注有两种思路
       1. 按层级，给出全部场景，直接标注（快，拉胯，但是多标的少
       2. 按层级，依次分别判断是否属于某个场景，对所有是的继续进入下一层级（慢。特别是逐行标，准确率较高，易多标
-    直观和测试结果都会死第二种思路更好，但是速度太慢，目前结果
+    直观和测试结果都会比第二种思路更好，但是速度太慢，目前结果
     |metric|score|
     |---|---|
     |recall|0.76|
@@ -103,7 +108,7 @@ Yonghang: Related works including empiricals, providing with theory(test the rel
   
 
   ## CEE
-  （Major）
+  （Major）`Final Version here`
   ### Grid
   粒度: 基本可以统一，个人直观感受类似于vscode对于C++所报错的二级traceback粒度
   ### Components
@@ -146,7 +151,7 @@ Yonghang: Related works including empiricals, providing with theory(test the rel
     |recall|0.76|
     |coverage|0.49|
     |llmreview|极不稳定|
-
+   `zxm: llmreview, how about others? Meanwhile, 我个人认为在同深度分支上的exception，或浅或深，也是相对能够接受的exception selection，反映在recall上，还能够有所提升；coverage我想是由于已经惩罚了误报？可以先不考虑误报。若只是当前coverage为现在的指标，需要综合细粒度和其它方法辅助增强（from related）。`
   ### Detection
   #### Coverage Pass
   `设计，有效检测指标[考虑漏报和误报]。宇轩在这里更新指标设计`
@@ -155,29 +160,33 @@ Yonghang: Related works including empiricals, providing with theory(test the rel
 
   #### Recall@k
   异常类型分类指标
+  
   <img width="723" alt="image" src="https://github.com/user-attachments/assets/b3309841-72e0-4b72-8a01-4a6b1881df71">
 
   ### Handling
-  #### LLMReview（or other recommend）[prior]
-  异常处理质量评估指标
-  #### Pass@k(待定)
+  #### LLMReview（or other recommend, such as Edit Similarity and Hosting test cases）[prior]
+  异常处理质量评估指标, 
+  #### Pass@k
+  对模型在传统测试集的影响，包括HumanEval, MBPP等。(I'm really looking forward to a slight improvement)
 
   ## Sensitive Code Detection
   ### Experimental Settings
-  `宇轩：按照pipline，详细介绍具体方法实现和工作流`
+  `宇轩：按照pipline，详细介绍具体方法实现和工作流（a specific figure）`
   ### Leaderboard
-  不同模型的测试效果
+  不同模型的测试效果, now GPT-4o cost much, which likely to be a concept or ideal framework. How about those open-source models like codegen, codellama, starcoder, etc?
   ### Detection Baslines
-  FuzzyCatch
+  FuzzyCatch, etc.
   
 
   ## Exception Safety Code Generation
   ### Experimental Settings
   Agent实现链
+
+  `should we just combine and call: Method?`
   ### Leaderboard
   不同模型的测试效果
   ### Handling Baselines
-  FuzzyCatch
+  FuzzyCatch, etc.
   ### Issue Solving
   SWE-bench performance
   <img width="1004" alt="image" src="https://github.com/user-attachments/assets/c7827835-3e1a-49de-9bd0-47d276f7c386">
@@ -185,18 +194,34 @@ Yonghang: Related works including empiricals, providing with theory(test the rel
   ## Citation
   `Yonghang: infilling summarize method,result,issue and papers`
   [2023 ASE]From Misuse to Mastery: Enhancing Code Generation with Knowledge-Driven AI Chaining
+  
   KPC针对简单function-level代码提出了一个基于Java JDK文档的循环问询框架。然而，无法保证代码功能的固定性、异常类型的覆盖度、代码难度的泛化性、可解释性。此外，评估方法存疑（Evosuite，CodeReview，LLMEval，BLEU）[criticize, introduce our solid metrics]。
+  
   [2020 FSE]Code recommendation for exception handling
+  
   `To be continued`
+  
   [2020 ASE]Learning to Handle Exceptions
+  
   基于微调LSTM架构的机器学习方法 `To be continued`
+  
   [IDE Plugin]Csense; ExceptionAI
+  
   not maintaining&bad performance `To be double check`
+  
   [Prof.Yang Liu]
+  
   Combining Fine-Tuning and LLM-based Agents for Intuitive Smart Contract Auditing with Justifications
+  
   <img width="1446" alt="image" src="https://github.com/user-attachments/assets/74e27773-595c-4bab-b4a6-f4f63abdfa39">
+  
   `To be verified`
+  
   <img width="1508" alt="image" src="https://github.com/user-attachments/assets/0c22d028-59be-484a-86cc-20d5bca00873">
+  
+  [2024 ICLR]SWE-bench: Can Language Models Resolve Real-world Github Issues?
+  
+  [To be infilled]Other benchmarks, respectfully.
 
 
 
