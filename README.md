@@ -1,5 +1,5 @@
 # ExceptionCoder
-ExceptionCoder is an advanced exception safety code generation method based on Common Exception Enumeration. Details of ExceptionCoder can be found in our paper "ExceptionCoder: Detecting Sensitive Code and Handling Exceptions by CEE-based Multi-Agent" [Paper](https://www.overleaf.com/project/66b49b0d707520653aea0a10).
+ExceptionCoder is an advanced exception safety code generation method based on Common Exception Enumeration. Details of ExceptionCoder can be found in our paper "ExceptionCoder : Detecting Sensitive Code and Handling Exceptions by CEE-based Multi-Agent" [Paper](https://www.overleaf.com/project/66b49b0d707520653aea0a10).
 
 ## News
 [Jun 19, 2024]We submit this project to Prof.Huang Minlie and Prof.Yuan Yuan and got approved.
