@@ -68,6 +68,7 @@ Discussing and Execuvating...
   
   同时带来了分类与生成可解释性、异常类型平衡分布、自定义异常处理的巨大优势。我们向已开源项目反馈了x处异常处理优化建议并获得采纳。
   <img width="1394" alt="截屏2024-08-23 14 33 47" src="https://github.com/user-attachments/assets/ebf3c4c1-dec6-44af-8d6d-51ad48b20c5c">
+[whiteboard_exported_image.pdf](https://github.com/user-attachments/files/16727785/whiteboard_exported_image.pdf)
 
 
   ## Released Versions
