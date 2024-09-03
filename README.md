@@ -12,9 +12,9 @@ Discussing and Execuvating...
 
 [ToDo, End annouce] 
 
-Yuxuan: Explain both scenario and property(can LLM say in reasonable?)- Fine-grid(Code-attribute-based)property; Optimazing methods from theory, including summarize match, deep search; Templete->idiom/code pattern and test LLM review&Edit Similarity.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]
+Yuxuan: Explain both scenario and property(can LLM say in reasonable?)- Fine-grid(Code-attribute-based)property; Optimazing methods from theory, including summarize match, deep search; Templete->idiom/code pattern and test LLM review&Edit Similarity.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]; Agents pipline and general API.
 
-Yonghang: Fine-tuning baseline(SFT,alignment), give me a premilinary comparison data; Benchmark interface with repo-level and HumanEval&SWE-Bench, *construction rules*; Related works including empiricals, providing with theory(test the relevance with vulnerability series).
+Yonghang: Fine-tuning baseline(SFT,alignment), give me a premilinary comparison data; Benchmark interface with repo-level and HumanEval&SWE-Bench, *construction rules*; Related works including empiricals, providing with theory(test the relevance with vulnerability series); ExceptionCoder: Platform.(Align to Code Agent)
 
 ## Outline
 - [ExceptionCoder](#exceptioncoder)
