@@ -10,11 +10,11 @@ Discussing and Execuvating...
 
 [Aug 23,2024] CEE-base(version3),with more specific scenario defination and first-round experiments; Baselines experiments.[All in Code-Slice Level: ExceptionEval-base]; Also, have a discussion with Dr.Jia Li
 
-[ToDo,End annouce] 
+[ToDo, End annouce] 
 
-Yuxuan: Fine-grid(Code-attribute-based)property; Optimazing methods from theory.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]
+Yuxuan: Explain both scenario and property(can LLM say in reasonable?)- Fine-grid(Code-attribute-based)property; Optimazing methods from theory, including summarize match, deep search; Templete->idiom/code pattern and test LLM review&Edit Similarity.[We should make pure Coverage to about 90%, then punish False Postives and extend to repo-level and HumanEval&SWE-Bench]
 
-Yonghang: Related works including empiricals, providing with theory(test the relevance with vulnerability series); Benchmark interface with repo-level and HumanEval&SWE-Bench; Fine-tuning baseline(SFT,alignment)[switching]
+Yonghang: Fine-tuning baseline(SFT,alignment), give me a premilinary comparison data; Benchmark interface with repo-level and HumanEval&SWE-Bench, *construction rules*; Related works including empiricals, providing with theory(test the relevance with vulnerability series).
 
 ## Outline
 - [ExceptionCoder](#exceptioncoder)
