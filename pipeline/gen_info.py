@@ -2,7 +2,7 @@ from prompt import *
 from gpt_call import *
 import json
 
-with open ("throwable_tree_with_info______.json", "r", encoding='utf-8') as f:
+with open ("throwable_tree_with_info.json", "r", encoding='utf-8') as f:
     throwable_tree = json.load(f)
 
 error_nodes = []
@@ -24,7 +24,7 @@ def get_info(node):
         
 get_info(throwable_tree)
 
-with open("throwable_tree_with_info_______.json", "w", encoding='utf-8') as f:
+with open("throwable_tree_with_info_.json", "w", encoding='utf-8') as f:
     json.dump(throwable_tree, f, ensure_ascii=False, indent=4)
 
 with open("error_nodes.json", "w", encoding='utf-8') as f:

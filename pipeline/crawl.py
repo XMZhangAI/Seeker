@@ -12,19 +12,17 @@ def get_tree(url):
 
 def get_subclasses(tree):
     subclasses = []
-    # 如果/html/body/div[4]/div[1]/ul/li/dl[2]/dt的文本是Direct Known Subclasses
     if len(tree.xpath('/html/body/div[4]/div[1]/ul/li/dl[2]/dt/text()')) == 0:
         return subclasses
     if tree.xpath('/html/body/div[4]/div[1]/ul/li/dl[2]/dt/text()')[0] != "Direct Known Subclasses:":
         return subclasses
-    # 获取所有的Direct Known Subclasses
+    # Get all Direct Known Subclasses
     dd_tags = tree.xpath('/html/body/div[4]/div[1]/ul/li/dl[2]/dd/a')
     for a_tag in dd_tags:
         subclass_name = a_tag.text
         if "Error" not in subclass_name and "Exception" not in subclass_name:
             continue
         relative_path = a_tag.get('href')
-        # 把../../java/lang/中的../../去掉
         relative_path = relative_path.replace("../", "")
         absolute_url = os.path.join(os.path.dirname(BASE_URL), relative_path).replace("\\", "/")
         subclasses.append((subclass_name, absolute_url))
