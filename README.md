@@ -36,7 +36,7 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
     ```json
     sample_cee_node = {
       "name": "IOException",
-      "children": [...],
+      "children": ["..."],
       "info": {
           "definition": "IOException is a checked exception that is thrown when an input-output operation failed or interrupted. It's a general class of exceptions produced by failed or interrupted I/O operations.",
           "reasons": "There are several reasons that could cause an IOException to be thrown. These include: File not found error, when the file required for the operation does not exist; Accessing a locked file, which another thread or process is currently using; The file system is read only and write operation is performed; Network connection closed prematurely; Lack of access rights.",
