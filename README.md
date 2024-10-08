@@ -37,7 +37,7 @@
 ## Introduction
 In real-world software development, improper or missing exception handling can severely impact the robustness and reliability of code. Exception handling mechanisms require developers to detect, capture, and manage exceptions according to high standards, but many developers struggle with these tasks, leading to fragile code. This problem is particularly evident in open-source projects and impacts the overall quality of the software ecosystem.
 To address this challenge, we propose *Seeker*, a multi-agent framework inspired by expert developer strategies for exception handling. Seeker uses agents—Scanner, Detector, Predator, Ranker, and Handler—to assist LLMs in detecting, capturing, and resolving exceptions more effectively.
-![截屏2024-10-08 23.21.26](https://i.imgur.com/ydFyBVS.png)
+![fig1](https://i.imgur.com/ydFyBVS.png)
 
 
   ## Released Versions
