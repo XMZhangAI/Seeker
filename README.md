@@ -20,7 +20,7 @@
       - [Coverage Pass](#coverage-pass)
       - [Recall@k](#recallk)
     - [Handling](#handling)
-      - [LLMReview（or other recommend）\[prior\]](#llmreviewor-other-recommendprior)
+      - [LLMReview](#llmreview)
       - [Pass@k(待定)](#passk待定)
   - [Sensitive Code Detection](#sensitive-code-detection)
     - [Experimental Settings](#experimental-settings)
@@ -90,7 +90,7 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
   <img width="723" alt="image" src="https://github.com/user-attachments/assets/b3309841-72e0-4b72-8a01-4a6b1881df71">
 
   ### Handling
-  #### LLMReview（or other recommend, such as Edit Similarity and Hosting test cases）[prior]
+  #### LLMReview
   异常处理质量评估指标, 
   #### Pass@k
   对模型在传统测试集的影响，包括HumanEval, MBPP等。(I'm really looking forward to a slight improvement)
