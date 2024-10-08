@@ -37,7 +37,8 @@
 ## Introduction
 In real-world software development, improper or missing exception handling can severely impact the robustness and reliability of code. Exception handling mechanisms require developers to detect, capture, and manage exceptions according to high standards, but many developers struggle with these tasks, leading to fragile code. This problem is particularly evident in open-source projects and impacts the overall quality of the software ecosystem.
 To address this challenge, we propose *Seeker*, a multi-agent framework inspired by expert developer strategies for exception handling. Seeker uses agents—Scanner, Detector, Predator, Ranker, and Handler—to assist LLMs in detecting, capturing, and resolving exceptions more effectively.
-[seeker-pipeline.pdf](https://github.com/user-attachments/files/17289393/seeker-pipeline.pdf)
+<img width="1246" alt="截屏2024-10-08 15 39 02" src="https://github.com/user-attachments/assets/bd416070-e323-4076-b367-af55a078ef1f">
+
 
   ## Released Versions
   + CEE-Java-1002
@@ -51,12 +52,15 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
 
   ## CEE
   Without a comprehensive and standardized document like CEE, developers may struggle to accurately detect and handle exceptions, leading to either overly generic or improperly specific exception management. CEE addresses these challenges by providing a structured and exhaustive repository of exception information, encompassing scenarios, properties, and recommended handling strategies for each exception type. The construction of CEE is guided by three essential rules, each aimed at addressing the complexities of exception management within Java development.
+  
   ### Grid-Fine-Tuning
   <img width="596" alt="截屏2024-10-08 15 29 48" src="https://github.com/user-attachments/assets/96e2b2fe-7e8f-4419-b788-c7e1db674a28">
   
   ### Components
   *Scenario:* This component describes the specific coding situations or environments in which an exception is likely to occur. By analyzing real-world applications and common coding patterns, we can create realistic scenarios that help developers understand when to anticipate particular exceptions. This contextual understanding is critical for effective exception handling, as it allows developers to write more accurate and responsive code.
+  
   *Property:* This aspect outlines the characteristics and attributes of each exception. Understanding the properties of an exception, such as its severity, possible causes, and the context of its occurrence, they are vital for appropriate handling. This detailed information allows developers to make informed decisions on how to respond to exceptions based on their inherent properties.
+  
   *Handling Logic:* For each exception node, we define best practices for handling the exception. This includes recommended coding strategies, such as specific try-catch blocks, logging mechanisms, and fallback strategies. By incorporating proven handling logic derived from both successful enterprise practices and open-source contributions, we provide a comprehensive guide that assists developers in implementing effective exception management.
 
   ## Metadata
