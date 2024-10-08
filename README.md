@@ -20,7 +20,7 @@
       - [Coverage Pass](#coverage-pass)
       - [Recall@k](#recallk)
     - [Handling](#handling)
-      - [LLMReview](#llmreview)
+      - [LLMReview](#llmreviewor-other-recommendprior)
       - [Pass@k(待定)](#passk待定)
   - [Sensitive Code Detection](#sensitive-code-detection)
     - [Experimental Settings](#experimental-settings)
@@ -37,7 +37,7 @@
 ## Introduction
 In real-world software development, improper or missing exception handling can severely impact the robustness and reliability of code. Exception handling mechanisms require developers to detect, capture, and manage exceptions according to high standards, but many developers struggle with these tasks, leading to fragile code. This problem is particularly evident in open-source projects and impacts the overall quality of the software ecosystem.
 To address this challenge, we propose *Seeker*, a multi-agent framework inspired by expert developer strategies for exception handling. Seeker uses agents—Scanner, Detector, Predator, Ranker, and Handler—to assist LLMs in detecting, capturing, and resolving exceptions more effectively.
-<img width="1246" alt="截屏2024-10-08 15 39 02" src="https://github.com/user-attachments/assets/bd416070-e323-4076-b367-af55a078ef1f">
+![截屏2024-10-08 23.21.26](https://i.imgur.com/ydFyBVS.png)
 
 
   ## Released Versions
@@ -54,7 +54,7 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
   Without a comprehensive and standardized document like CEE, developers may struggle to accurately detect and handle exceptions, leading to either overly generic or improperly specific exception management. CEE addresses these challenges by providing a structured and exhaustive repository of exception information, encompassing scenarios, properties, and recommended handling strategies for each exception type. The construction of CEE is guided by three essential rules, each aimed at addressing the complexities of exception management within Java development.
   
   ### Grid-Fine-Tuning
-  <img width="596" alt="截屏2024-10-08 15 29 48" src="https://github.com/user-attachments/assets/96e2b2fe-7e8f-4419-b788-c7e1db674a28">
+  ![截屏2024-10-08 23.24.31](https://i.imgur.com/lnVbIcI.png)
   
   ### Components
   *Scenario:* This component describes the specific coding situations or environments in which an exception is likely to occur. By analyzing real-world applications and common coding patterns, we can create realistic scenarios that help developers understand when to anticipate particular exceptions. This contextual understanding is critical for effective exception handling, as it allows developers to write more accurate and responsive code.
@@ -67,7 +67,7 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
   To ensure the quality and representativeness of the dataset, we carefully selected projects on GitHub that are both active and large in scale. We applied stringent selection criteria, including the number of stars, forks, and exception handling repair suggestions in the project to ensure that the dataset comprehensively covers the exception handling practices of modern open-source projects. By automating the collection of project metadata and commit history through the GitHub API, and manually filtering commit records related to exception handling, we have constructed a high-quality, representative dataset for exception handling that provides a solid foundation for evaluating Seeker.
 
   ## Repositories
-<img width="539" alt="截屏2024-10-08 15 34 37" src="https://github.com/user-attachments/assets/30ed584d-31c0-4b5c-a9b4-af538d424f42">
+![截屏2024-10-08 23.25.40](https://i.imgur.com/HWyFNZy.png)
 
   ## Evaluation
   `指标信息（Coverage Pass（优化设计，有效检测指标[考虑漏报和误报]），Recall（异常类型分类指标），Code/LLMReview（or other solid metrics）（异常处理质量评估指标[prior]），Pass@k（异常处理功能正确性指标）[异常处理究竟是否影响代码功能正确性]），实时更新实验数据（检测和生成）。`
