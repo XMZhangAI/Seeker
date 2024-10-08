@@ -118,38 +118,7 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
   <img width="1004" alt="image" src="https://github.com/user-attachments/assets/c7827835-3e1a-49de-9bd0-47d276f7c386">
 
   ## Citation
-  `Yonghang: infilling with summarize papers: method,result,issue`
-  
-  [2023 ASE]From Misuse to Mastery: Enhancing Code Generation with Knowledge-Driven AI Chaining
-  
-  KPC针对简单function-level代码提出了一个基于Java JDK文档的循环问询框架。然而，无法保证代码功能的固定性、异常类型的覆盖度、代码难度的泛化性、可解释性。此外，评估方法存疑（Evosuite，CodeReview，LLMEval，BLEU）[criticize, introduce our solid metrics]。
-  
-  [2020 FSE]Code recommendation for exception handling
-  
-  `To be continued`
-  
-  [2020 ASE]Learning to Handle Exceptions
-  
-  基于微调LSTM架构的机器学习方法 `To be continued`
-  
-  [IDE Plugin]Csense; ExceptionAI
-  
-  not maintaining&bad performance `To be double check`
-  
-  [Prof.Yang Liu]
-  
-  Combining Fine-Tuning and LLM-based Agents for Intuitive Smart Contract Auditing with Justifications
-  
-  <img width="1446" alt="image" src="https://github.com/user-attachments/assets/74e27773-595c-4bab-b4a6-f4f63abdfa39">
-  
-  `To be verified`
-  
-  <img width="1508" alt="image" src="https://github.com/user-attachments/assets/0c22d028-59be-484a-86cc-20d5bca00873">
-  
-  [2024 ICLR]SWE-bench: Can Language Models Resolve Real-world Github Issues?
-  
-  [To be infilled]Other benchmarks, respectfully.
-
+  Arxiv, On hold.
 
 
   
