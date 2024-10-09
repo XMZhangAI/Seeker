@@ -99,9 +99,9 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
 
   Based on an automated code review model, this metric evaluates the overall quality of the generated code in terms of adherence to coding standards and best practices.
 
-$$
-  \text{ACRS} = \text{CodeReviewModel}(\text{GeneratedCode})
-$$
+  $$
+    \text{ACRS} = \text{CodeReviewModel}(\text{GeneratedCode})
+  $$
 
   **Explanation**: A higher ACRS indicates better code quality, reflecting well-structured and maintainable code.
 
@@ -109,9 +109,9 @@ $$
 
   This metric measures the coverage of sensitive code detected by the \textbf{Detector} agent compared to the actual sensitive code.
 
-$$
-  \text{COV} = \frac{|\text{Correct Detected Sensitive Code}|}{|\text{Actual Sensitive Code}|}
-$$
+  $$
+    \text{COV} = \frac{|\text{Correct Detected Sensitive Code}|}{|\text{Actual Sensitive Code}|}
+  $$
 
   **Explanation**: It quantifies the proportion of actual sensitive code that our method successfully detects. Over-detection (marking more code than necessary) is not penalized.
 
@@ -119,9 +119,9 @@ $$
 
   This metric assesses the coverage relation between the try-blocks detected by the \textbf{Predator} agent and the actual code that requires try-catch blocks.
 
-$$
-  \text{COV\text{-}P} = \frac{|\text{Correct Try\text{-}Blocks}|}{|\text{Actual Try\text{-}Blocks}|}
-$$
+  $$
+    \text{COV\text{-}P} = \frac{|\text{Correct Try\text{-}Blocks}|}{|\text{Actual Try\text{-}Blocks}|}
+  $$
 
   **Explanation**: A try-block is considered correct if it exactly matches the actual code lines. Over-marking or under-marking is counted as incorrect. Over-detection is penalized in this metric by including the incorrectly detected try-catch blocks in the denominator while counting them as incorrect (zero) in the numerator, thus reducing the overall Coverage Pass score.
 
@@ -129,9 +129,9 @@ $$
 
   This metric evaluates the correctness of the exception types identified by the **Predator** agent compared to the actual exception types.
 
-$$
-  \text{ACC} = \frac{|\text{Correct Exception Types}|}{|\text{Total Exception Types Identified}|}
-$$
+  $$
+    \text{ACC} = \frac{|\text{Correct Exception Types}|}{|\text{Total Exception Types Identified}|}
+  $$
 
   **Explanation**: An exception type is considered correct if it matches the actual exception or is a reasonable subclass of the actual exception type.
 
@@ -139,9 +139,9 @@ $$
 
   This metric computes the text similarity between the generated try-catch blocks after processing by the **Handler agent** and the actual try-catch blocks.
 
-$$
-  \text{ES} = \text{Similarity}(\text{Generated Try\text{-}Catch}, \text{Actual Try\text{-}Catch})
-$$
+  $$
+    \text{ES} = \text{Similarity}(\text{Generated Try\text{-}Catch}, \text{Actual Try\text{-}Catch})
+  $$
 
   **Explanation**: We use the Levenshtein distance to measure similarity. A higher ES indicates that the generated code closely matches the actual code.
 
@@ -149,9 +149,9 @@ $$
 
   This metric involves submitting the generated try-catch blocks to GPT-4o for evaluation. The language model provides a binary assessment: good or bad.
 
-$$
-  \text{CRS} = \frac{|\text{Good Evaluations}|}{|\text{Total Evaluations}|}
-$$
+  $$
+    \text{CRS} = \frac{|\text{Good Evaluations}|}{|\text{Total Evaluations}|}
+  $$
 
   **Explanation**: CRS reflects the proportion of generated exception handling implementations that are considered good according to engineering best practices.
 
