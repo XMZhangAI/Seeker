@@ -160,11 +160,13 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
 
   ### Comparison
   We conducted experiments using GPT-4o as the agent's internal large model. Our dataset consists of 750 fragile Java code snippets extracted from real-world projects. We compare our method against KPC, traditional RAG, and General Prompting methods. The performance comparison is presented in the following table.
-  ![comparison](./asset/comparison.png)
+ <img width="695" alt="截屏2024-10-09 22 51 38" src="https://github.com/user-attachments/assets/3c88f59a-5179-4e3e-b5fe-9a22217e88dc">
+
 
   ### Leaderboard
   We use different open-source (e.g. Code Llama-34B , WizardCoder-34B, Vicuna-13B) and closed-source(e.g. Claude-2,GPT-3-davinci, GPT-3.5-turbo, GPT-4-turbo, GPT-4o) LLMs as the agent’s internal model to further analyze models’ ability for exception handling. The results are summarized in the following table.
-  ![leaderboard](./asset/leaderboard.png)
+  <img width="660" alt="截屏2024-10-09 22 52 10" src="https://github.com/user-attachments/assets/a672121d-5520-4c22-a317-895503abc063">
+
 
   ## Citation
   Arxiv, On hold.
