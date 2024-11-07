@@ -1,5 +1,5 @@
-/*** Coarse-grained Reminding Prompting
-@param Pay attention to potential exceptions
+/*** Fine-grained Reminding Prompting
+@param Pay attention to JSONException
 */
 public void load(String json) {
   try {
@@ -10,9 +10,13 @@ public void load(String json) {
     if (ids != null) {
       for (int i = 0; i < ids.length(); i++) {
         String id = ids.getString(i);
-        JSONObject o = modelarray.getJSONObject(id);
-        mModels.put(o.getLong("id"), o);
-      }
+        JSONObject o = modelArray.getJSONObject(id);
+        if (o.has("id")) {
+          mModels.put(o.getLong("id"), o);
+        } else {
+          System.err.println("JSONObject for ID " + id + " does not
+contain 'id' field.");
+        }
     }
   } catch (JSONException e) {
     System.err.println("JSON processing error: " + e.getMessage());
