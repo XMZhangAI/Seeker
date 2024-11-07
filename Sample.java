@@ -16,8 +16,7 @@ public void load(String json) {
         if (o.has("id")) {
           mModels.put(o.getLong("id"), o);
         } else {
-          System.err.println("JSONObject for ID " + id + " does not
-contain 'id' field.");
+          System.err.println("JSONObject for ID " + id + " does not contain 'id' field.");
         }
     }
   } catch (JSONException e) {
