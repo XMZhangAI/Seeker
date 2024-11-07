@@ -1,5 +1,5 @@
-/*** Fine-grained Inspiring Prompting
-@param Pay attention to JSONException. If the JSON data is malformed or not in the expected format, it raises an exception.
+/*** Fine-grained Guiding Prompting
+@param Pay attention to the JSONException. If you observe which lines of code are prone to the possibility of incorrect JSON data format or not the expected format, try the possible lines together to return JSONException, and do not arbitarily add code to affect the original function.
 */
 public void load(String json) { 
   mChanged = false;
