@@ -5,8 +5,10 @@ public void load(String json) {
   try {
     mChanged = false;
     mModels = new HashMap<Long, JSONObject>();
-    JSONObeject modelarray = new JSONObeject(json);
-    JSONArray ids = modelarray.names();
+    JSONObject modelArray = new JSONObject(json);
+    if (!modelArray.has("id")) {
+      throw new JSONException("The JSON does not contain the expected 'id' field.");
+    JSONArray ids = modelArray.names();
     if (ids != null) {
       for (int i = 0; i < ids.length(); i++) {
         String id = ids.getString(i);
