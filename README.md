@@ -169,7 +169,14 @@ To address this challenge, we propose *Seeker*, a multi-agent framework inspired
 
 
   ## Citation
-  Arxiv, On hold.
+  ```bash
+  @article{zhang2024seeker,  
+  title={Seeker: Towards Exception Safety Code Generation with Intermediate Language Agents Framework},
+  author={Zhang, Xuanming and Chen, Yuxuan and Zheng, Yiming and Zhang, Zhexin and Yuan, Yuan and Huang, Minlie},
+  journal={arXiv preprint arXiv:2412.11713},
+  year={2024}
+}
+```
 
 
   
