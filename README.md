@@ -1,5 +1,5 @@
 # Seeker
-*Seeker* is a multi-agent framework inspired by expert developer strategies for exception handling. Details of Seeker can be found in our paper "Seeker: Enhancing Exception Handling in Code with a LLM-based Multi-Agent Approach" [Paper]().
+*Seeker* is a multi-agent framework inspired by expert developer strategies for exception handling. Details of Seeker can be found in our paper "Seeker: Enhancing Exception Handling in Code with a LLM-based Multi-Agent Approach" [Paper](https://arxiv.org/abs/2412.11713).
 
 ## News
 We launched the CEE website: https://common-exception-enumeration.github.io/CEE/
